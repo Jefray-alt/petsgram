@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import type { FormSubmitEvent } from '@nuxt/ui'
 import Joi from 'joi'
+import type { FormSubmitEvent } from '@nuxt/ui'
+
+const colorMode = useColorMode()
 
 const loginFormSchema = Joi.object({
   email: Joi.string().email({ tlds: { allow: false } }).required().label('Email'),
@@ -14,6 +16,7 @@ const loginForm = reactive({
 
 const onSubmit = (event: FormSubmitEvent<typeof loginForm>) => {
   // Handle form submission logic here
+  console.log(colorMode)
   console.log('Login form submitted:', event.data)
 }
 </script>
