@@ -2,8 +2,6 @@
 import Joi from 'joi'
 import type { FormSubmitEvent } from '@nuxt/ui'
 
-const colorMode = useColorMode()
-
 const loginFormSchema = Joi.object({
   email: Joi.string().email({ tlds: { allow: false } }).required().label('Email'),
   password: Joi.string().min(6).required().label('Password')
@@ -15,10 +13,13 @@ const loginForm = reactive({
 })
 
 const onSubmit = (event: FormSubmitEvent<typeof loginForm>) => {
-  // Handle form submission logic here
-  console.log(colorMode)
   console.log('Login form submitted:', event.data)
 }
+
+useSeoMeta({
+  title: 'Login - Petsgram',
+  description: 'Login to your Petsgram account and connect with fellow pet lovers.'
+})
 </script>
 
 <template>
