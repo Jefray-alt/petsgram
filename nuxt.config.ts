@@ -1,6 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/ui', '@nuxtjs/supabase'],
+  components: [{
+    path: '~/components',
+    pathPrefix: false
+  }],
 
   devtools: {
     enabled: true
