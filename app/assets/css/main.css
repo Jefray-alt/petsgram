@@ -64,3 +64,7 @@
   --color-stormy-teal-900: #072b2c;
   --color-stormy-teal-950: #051e1f;
 }
+
+.bg-gradient-login {
+  background: linear-gradient(120deg, #f03c0f 0%, #ff512f 50%, #f09819 100%);
+}
