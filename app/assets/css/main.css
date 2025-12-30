@@ -4,15 +4,63 @@
 @theme static {
   --font-sans: 'Public Sans', sans-serif;
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+  --color-espresso-50: #f6eeee;
+  --color-espresso-100: #eedddd;
+  --color-espresso-200: #dcbcbc;
+  --color-espresso-300: #cb9a9a;
+  --color-espresso-400: #ba7878;
+  --color-espresso-500: #a85757;
+  --color-espresso-600: #874545;
+  --color-espresso-700: #653434;
+  --color-espresso-800: #432323;
+  --color-espresso-900: #221111;
+  --color-espresso-950: #180c0c;
+
+  --color-fiery-terracotta-50: #fdece7;
+  --color-fiery-terracotta-100: #fcd8cf;
+  --color-fiery-terracotta-200: #f9b19f;
+  --color-fiery-terracotta-300: #f68a6f;
+  --color-fiery-terracotta-400: #f3633f;
+  --color-fiery-terracotta-500: #f03c0f;
+  --color-fiery-terracotta-600: #c0300c;
+  --color-fiery-terracotta-700: #902409;
+  --color-fiery-terracotta-800: #601806;
+  --color-fiery-terracotta-900: #300c03;
+  --color-fiery-terracotta-950: #220802;
+
+  --color-wheat-50: #fcf4e9;
+  --color-wheat-100: #f8ead3;
+  --color-wheat-200: #f2d5a6;
+  --color-wheat-300: #ebc07a;
+  --color-wheat-400: #e4ab4e;
+  --color-wheat-500: #de9621;
+  --color-wheat-600: #b1781b;
+  --color-wheat-700: #855a14;
+  --color-wheat-800: #593c0d;
+  --color-wheat-900: #2c1e07;
+  --color-wheat-950: #1f1505;
+
+  --color-dark-cyan-50: #e8fdfd;
+  --color-dark-cyan-100: #d0fbfb;
+  --color-dark-cyan-200: #a2f6f6;
+  --color-dark-cyan-300: #73f2f2;
+  --color-dark-cyan-400: #44eeee;
+  --color-dark-cyan-500: #16e9e9;
+  --color-dark-cyan-600: #11bbbb;
+  --color-dark-cyan-700: #0d8c8c;
+  --color-dark-cyan-800: #095d5d;
+  --color-dark-cyan-900: #042f2f;
+  --color-dark-cyan-950: #032121;
+
+  --color-stormy-teal-50: #e9fbfc;
+  --color-stormy-teal-100: #d3f7f8;
+  --color-stormy-teal-200: #a7f0f1;
+  --color-stormy-teal-300: #7be8ea;
+  --color-stormy-teal-400: #4fe1e3;
+  --color-stormy-teal-500: #22d9dd;
+  --color-stormy-teal-600: #1caeb0;
+  --color-stormy-teal-700: #158284;
+  --color-stormy-teal-800: #0e5758;
+  --color-stormy-teal-900: #072b2c;
+  --color-stormy-teal-950: #051e1f;
 }
