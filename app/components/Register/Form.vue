@@ -2,18 +2,20 @@
 import Joi from 'joi'
 import type { FormSubmitEvent } from '@nuxt/ui'
 
-const loginFormSchema = Joi.object({
+const registerFormSchema = Joi.object({
+  username: Joi.string().min(3).max(20).required().label('Username'),
   email: Joi.string().email({ tlds: { allow: false } }).required().label('Email'),
   password: Joi.string().min(6).required().label('Password')
 })
 
-const loginForm = reactive({
+const registerForm = reactive({
+  username: '',
   email: '',
   password: ''
 })
 
-const onSubmit = (event: FormSubmitEvent<typeof loginForm>) => {
-  console.log('Login form submitted:', event.data)
+const onSubmit = (event: FormSubmitEvent<typeof registerForm>) => {
+  console.log('Register form submitted:', event.data)
 }
 </script>
 
@@ -22,29 +24,43 @@ const onSubmit = (event: FormSubmitEvent<typeof loginForm>) => {
     <div class="w-full max-w-sm px-6 py-8 bg-white rounded-2xl shadow-lg md:rounded-none md:shadow-none">
       <div class="mb-6">
         <h3 class="text-2xl font-semibold">
-          Login
+          Register
         </h3>
         <h2 class="block md:hidden">
-          Welcome back to Petsgram!
+          Join Petsgram today!
         </h2>
       </div>
 
       <UForm
-        :schema="loginFormSchema"
-        :state="loginForm"
+        :schema="registerFormSchema"
+        :state="registerForm"
         class="space-y-4"
         @submit="onSubmit"
       >
+        <UFormField
+          label="Username"
+          name="username"
+          required
+        >
+          <UInput
+            v-model="registerForm.username"
+            class="w-full"
+            type="text"
+            placeholder="Enter your username"
+            autocomplete="username"
+          />
+        </UFormField>
         <UFormField
           label="Email"
           name="email"
           required
         >
           <UInput
-            v-model="loginForm.email"
+            v-model="registerForm.email"
             class="w-full"
             type="email"
             placeholder="Enter your email"
+            autocomplete="email"
           />
         </UFormField>
         <UFormField
@@ -53,10 +69,11 @@ const onSubmit = (event: FormSubmitEvent<typeof loginForm>) => {
           required
         >
           <UInput
-            v-model="loginForm.password"
+            v-model="registerForm.password"
             class="w-full"
             type="password"
             placeholder="Enter your password"
+            autocomplete="new-password"
           />
         </UFormField>
         <UButton
@@ -65,26 +82,18 @@ const onSubmit = (event: FormSubmitEvent<typeof loginForm>) => {
           class="mt-6"
           type="submit"
         >
-          Login
+          Register
         </UButton>
         <UButton
           block
           size="lg"
           variant="outline"
+          to="/login"
           as="NuxtLink"
-          to="/register"
         >
-          Sign up instead
-          <Icon name="ic:baseline-arrow-forward" />
+          <Icon name="ic:baseline-arrow-back" />
+          Log in instead
         </UButton>
-        <div class="text-center mt-4">
-          <UButton
-            variant="link"
-            size="sm"
-          >
-            Forgot Password?
-          </UButton>
-        </div>
       </UForm>
     </div>
   </div>

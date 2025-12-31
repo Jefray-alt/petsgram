@@ -5,7 +5,6 @@ export default defineNuxtConfig({
     path: '~/components',
     pathPrefix: false
   }],
-
   devtools: {
     enabled: true
   },
@@ -13,19 +12,23 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'light'
   },
-
   routeRules: {
     '/': { prerender: true }
   },
-
   compatibilityDate: '2025-01-15',
-
   eslint: {
     config: {
       stylistic: {
         commaDangle: 'never',
         braceStyle: '1tbs'
       }
+    }
+  },
+  supabase: {
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/register', '/login', '/']
     }
   }
 })
