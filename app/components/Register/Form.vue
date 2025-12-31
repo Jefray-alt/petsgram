@@ -3,7 +3,7 @@ import Joi from 'joi'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { useRegister } from '@/composables/useRegister/useRegister'
 
-const { isSigningUp, isSignUpError, registerUser } = useRegister()
+const { isSigningUp, isSignUpError, signUpErrorMessage, registerUser } = useRegister()
 const router = useRouter()
 
 const registerFormSchema = Joi.object({
@@ -46,10 +46,10 @@ const onSubmit = async (event: FormSubmitEvent<typeof registerForm>) => {
       >
         <UAlert
           v-if="isSignUpError"
+          :description="signUpErrorMessage"
           color="error"
           variant="subtle"
           title="Oops!"
-          description="Looks like there was an error during registration. Please try again."
           icon="ic:twotone-error-outline"
         />
         <UFormField
