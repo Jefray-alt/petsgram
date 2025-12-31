@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import Joi from 'joi'
 import type { FormSubmitEvent } from '@nuxt/ui'
+import { useRegister } from '@/composables/useRegister/useRegister'
+
+const { isSigningUp, isSignUpError, registerUser } = useRegister()
+const router = useRouter()
 
 const registerFormSchema = Joi.object({
   username: Joi.string().min(3).max(20).required().label('Username'),
@@ -14,8 +18,11 @@ const registerForm = reactive({
   password: ''
 })
 
-const onSubmit = (event: FormSubmitEvent<typeof registerForm>) => {
-  console.log('Register form submitted:', event.data)
+const onSubmit = async (event: FormSubmitEvent<typeof registerForm>) => {
+  await registerUser(event.data)
+
+  if (isSignUpError.value) return
+  router.push('/')
 }
 </script>
 
@@ -37,6 +44,14 @@ const onSubmit = (event: FormSubmitEvent<typeof registerForm>) => {
         class="space-y-4"
         @submit="onSubmit"
       >
+        <UAlert
+          v-if="isSignUpError"
+          color="error"
+          variant="subtle"
+          title="Oops!"
+          description="Looks like there was an error during registration. Please try again."
+          icon="ic:twotone-error-outline"
+        />
         <UFormField
           label="Username"
           name="username"
@@ -81,6 +96,7 @@ const onSubmit = (event: FormSubmitEvent<typeof registerForm>) => {
           size="lg"
           class="mt-6"
           type="submit"
+          :loading="isSigningUp"
         >
           Register
         </UButton>
