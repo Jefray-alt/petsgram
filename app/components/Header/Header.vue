@@ -11,11 +11,19 @@
 
     <template #right>
       <UColorModeButton />
-      <UButton
-        icon="ic:baseline-account-circle"
-        to="/login"
-        as="NuxtLink"
-      />
+      <NuxtLink :to="currentUser ? '/profile' : '/login'">
+        <UAvatar
+          icon="ic:baseline-account-circle"
+        />
+      </NuxtLink>
     </template>
   </UHeader>
 </template>
+
+<script lang="ts" setup>
+import { useUser } from '@/composables/useUser/useUser'
+
+const { getUserProfile, currentUser } = useUser()
+
+await getUserProfile()
+</script>
