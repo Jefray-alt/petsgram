@@ -6,11 +6,16 @@ useSeoMeta({
   title: 'Login - Petsgram',
   description: 'Login to your Petsgram account and connect with fellow pet lovers.'
 })
+
+definePageMeta({
+  middleware: 'auth',
+  layout: false
+})
 </script>
 
 <template>
-  <div class="h-dvh flex flex-col md:flex-row">
+  <UMain class="h-dvh flex flex-col md:flex-row">
     <HeroBanner />
     <LoginForm />
-  </div>
+  </UMain>
 </template>
