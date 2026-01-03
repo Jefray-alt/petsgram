@@ -11,7 +11,18 @@
         icon="ic:baseline-pets"
         color="primary"
       />
-      <NuxtLink :to="userStore.currentUser ? '/profile' : '/login'">
+      <UDropdownMenu
+        v-if="userStore.currentUser"
+        :items="dropdownItems"
+      >
+        <UAvatar
+          icon="ic:baseline-account-circle"
+        />
+      </UDropdownMenu>
+      <NuxtLink
+        v-else
+        to="/login"
+      >
         <UAvatar
           icon="ic:baseline-account-circle"
         />
@@ -24,4 +35,16 @@
 import { useUserStore } from '@/stores/userStore'
 
 const userStore = useUserStore()
+
+const dropdownItems = [
+  {
+    label: 'Profile',
+    icon: 'lucide:user',
+    to: '/profile'
+  },
+  {
+    label: 'Log out',
+    icon: 'lucide:log-out'
+  }
+]
 </script>
