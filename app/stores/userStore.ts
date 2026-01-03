@@ -19,7 +19,7 @@ export const useUserStore = defineStore('user', {
       const { data: { user } } = await supabaseClient.auth.getUser()
 
       if (!user?.id) {
-        this.setProfile(null, null)
+        this.setProfile(null)
         return
       }
 
@@ -31,27 +31,25 @@ export const useUserStore = defineStore('user', {
 
       if (error) {
         console.log('Error fetching user profile:', error)
-        this.setProfile(null, null)
+        this.setProfile(null)
         return
       }
 
       const profile = mapProfileToCamelCase(data)
-      this.setProfile(profile, data)
+      this.setProfile(profile)
     },
 
-    setProfile(profile: Profile | null, profileRow: ProfileRow | null = null) {
+    setProfile(profile: Profile | null) {
       this.profile = profile
-      this.profileRow = profileRow
     },
 
     clearProfile() {
       this.profile = null
-      this.profileRow = null
     }
   },
 
   getters: {
     hasProfile: state => state.profile !== null,
-    currentUser: state => state.profileRow
+    currentUser: state => state.profile
   }
 })
