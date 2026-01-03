@@ -1,17 +1,17 @@
 <template>
-  <UHeader mode="drawer">
-    <template #title>
-      <NuxtLink
-        to="/"
-        class="text-xl font-bold"
-      >
-        Petsgram
-      </NuxtLink>
-    </template>
-
+  <UHeader
+    mode="drawer"
+    title="Petsgram"
+  >
     <template #right>
       <UColorModeButton />
-      <NuxtLink :to="currentUser ? '/profile' : '/login'">
+      <UButton
+        v-if="userStore.currentUser"
+        to="/profile/pets"
+        icon="ic:baseline-pets"
+        color="primary"
+      />
+      <NuxtLink :to="userStore.currentUser ? '/profile' : '/login'">
         <UAvatar
           icon="ic:baseline-account-circle"
         />
@@ -21,9 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useUser } from '@/composables/useUser/useUser'
+import { useUserStore } from '@/stores/userStore'
 
-const { getUserProfile, currentUser } = useUser()
-
-await getUserProfile()
+const userStore = useUserStore()
 </script>

@@ -1,12 +1,12 @@
 import type { LoginPayload } from './useLogin.types'
-import { useUser } from '@/composables/useUser/useUser'
+import { useUserStore } from '@/stores/userStore'
 
 export const useLogin = () => {
   const supabaseClient = useSupabaseClient()
+  const userStore = useUserStore()
   const isLoggingIn = ref(false)
   const isLoginError = ref(false)
   const loginErrorMessage = ref('')
-  const { getUserProfile } = useUser()
 
   const loginUser = async (data: LoginPayload) => {
     isLoggingIn.value = true
@@ -21,7 +21,7 @@ export const useLogin = () => {
 
       if (error) throw error
 
-      await getUserProfile()
+      await userStore.fetchProfile()
     } catch (error) {
       if (error instanceof Error && error.message.includes('Invalid login credentials')) {
         loginErrorMessage.value = 'Invalid login credentials'
