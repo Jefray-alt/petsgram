@@ -18,6 +18,21 @@ Petsgram is a modern pet-focused social media platform built with Nuxt 4, Vue 3,
 
 ## Architectural Patterns
 
+### No Auto-Import
+
+This project does **not** use Nuxt's auto-import feature. All components, composables, and utilities must be explicitly imported:
+
+```typescript
+// Components
+import ProfileCard from '@/components/Profile/Card.vue'
+
+// Composables
+import { useRegister } from '@/composables/useRegister/useRegister'
+
+// Stores
+import { useUserStore } from '@/stores/userStore'
+```
+
 ### Composables-First Approach
 
 Business logic should be encapsulated in composables located in `app/composables/`. Each composable should:

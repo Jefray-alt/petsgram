@@ -5,12 +5,6 @@
   >
     <template #right>
       <UColorModeButton />
-      <UButton
-        v-if="userStore.currentUser"
-        to="/profile/pets"
-        icon="lucide:paw-print"
-        color="primary"
-      />
       <UDropdownMenu
         v-if="userStore.currentUser"
         :items="dropdownItems"

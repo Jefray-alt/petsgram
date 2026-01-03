@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import ProfileCard from '@/components/Profile/Card.vue'
+import ProfilePets from '@/components/Profile/Pets.vue'
+import ProfilePhotos from '@/components/Profile/Photos.vue'
 
 const userStore = useUserStore()
 
@@ -8,7 +10,7 @@ await userStore.fetchProfile()
 
 <template>
   <UContainer class="py-12">
-    <div class="flex flex-col md:flex-row gap-8">
+    <div class="flex flex-col lg:flex-row lg:gap-20 gap-8">
       <ProfileCard
         v-if="userStore.currentUser"
         :id="userStore.currentUser.id"
@@ -18,7 +20,8 @@ await userStore.fetchProfile()
         is-own-profile
       />
       <div class="flex-1">
-        <!-- Main content area -->
+        <ProfilePets />
+        <ProfilePhotos />
       </div>
     </div>
   </UContainer>

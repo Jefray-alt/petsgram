@@ -11,14 +11,14 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div class="w-full md:w-1/6 flex flex-col items-center md:items-start">
+  <div class="w-full lg:w-1/6 flex flex-col items-center lg:items-start">
     <UAvatar
       :src="avatarUrl"
       :alt="fullName"
       size="3xl"
       class="w-48 h-48 mb-4"
     />
-    <div class="text-center md:text-left">
+    <div class="text-center lg:text-left">
       <h1 class="text-2xl font-bold">
         {{ fullName }}
       </h1>
