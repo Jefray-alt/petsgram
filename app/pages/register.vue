@@ -8,7 +8,6 @@ useSeoMeta({
 })
 
 definePageMeta({
-  middleware: 'auth',
   layout: false
 })
 </script>

@@ -7,12 +7,14 @@ const { isSigningUp, isSignUpError, signUpErrorMessage, registerUser } = useRegi
 const router = useRouter()
 
 const registerFormSchema = Joi.object({
+  fullName: Joi.string().min(2).max(50).required().label('Full Name'),
   username: Joi.string().min(3).max(20).required().label('Username'),
   email: Joi.string().email({ tlds: { allow: false } }).required().label('Email'),
   password: Joi.string().min(6).required().label('Password')
 })
 
 const registerForm = reactive({
+  fullName: '',
   username: '',
   email: '',
   password: ''
@@ -52,6 +54,19 @@ const onSubmit = async (event: FormSubmitEvent<typeof registerForm>) => {
           title="Oops!"
           icon="ic:twotone-error-outline"
         />
+        <UFormField
+          label="Full Name"
+          name="fullName"
+          required
+        >
+          <UInput
+            v-model="registerForm.fullName"
+            class="w-full"
+            type="text"
+            placeholder="Enter your full name"
+            autocomplete="name"
+          />
+        </UFormField>
         <UFormField
           label="Username"
           name="username"

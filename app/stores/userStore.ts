@@ -1,17 +1,16 @@
 import { defineStore } from 'pinia'
-import type { Profile, ProfileRow } from '@/types/profile.types'
+import type { Profile } from '@/types/profile.types'
 import { mapProfileToCamelCase } from '@/utils/mappers/profile.mapper'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    profile: null as Profile | null,
-    profileRow: null as ProfileRow | null
+    profile: null as Profile | null
   }),
 
   actions: {
     async fetchProfile() {
       // Skip if we already have the profile
-      if (this.hasProfile && this.profileRow) {
+      if (this.hasProfile && this.profile) {
         return
       }
 

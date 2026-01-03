@@ -2,6 +2,8 @@ import { RegisterError } from '@/errors/RegisterError.error'
 import type { RegisterPayload } from './useRegister.types'
 
 export const useRegister = () => {
+  const userStore = useUserStore()
+
   const supabaseClient = useSupabaseClient()
   const isSigningUp = ref(false)
   const isSignUpError = ref(false)
@@ -59,12 +61,15 @@ export const useRegister = () => {
         password: data.password,
         options: {
           data: {
+            full_name: data.fullName,
             username: data.username
           }
         }
       })
 
       if (error) throw error
+
+      await userStore.fetchProfile()
     } catch (error) {
       signUpErrorMessage.value = error instanceof RegisterError ? error.message : 'Registration error. Please check your details and try again.'
       isSignUpError.value = true
