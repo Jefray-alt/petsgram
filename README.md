@@ -30,7 +30,7 @@ A modern pets social platform built as a side project to explore and learn AI-as
 ### UI & Styling
 - **Nuxt UI 4.3.0** - Pre-built Vue component library
 - **Tailwind CSS** - Utility-first CSS framework
-- **Iconify** - Icon library with Lucide, Simple Icons, and IC collections
+- **Iconify** - Icon library with Lucide icons
 - **Custom Color Palette**: Fiery terracotta primary, espresso secondary
 
 ### Backend & Database

@@ -52,7 +52,7 @@ const onSubmit = async (event: FormSubmitEvent<typeof registerForm>) => {
           color="error"
           variant="subtle"
           title="Oops!"
-          icon="ic:twotone-error-outline"
+          icon="lucide:alert-circle"
         />
         <UFormField
           label="Full Name"

@@ -12,7 +12,7 @@ Petsgram is a modern pet-focused social media platform built with Nuxt 4, Vue 3,
 - **Language**: TypeScript 5.9 (strict mode enabled)
 - **Backend**: Supabase (authentication, database, storage)
 - **State Management**: Pinia stores for shared application state
-- **UI Library**: Nuxt UI 4.3 with Iconify icons (Lucide, Simple Icons)
+- **UI Library**: Nuxt UI 4.3 with Iconify icons (Lucide)
 - **Validation**: Joi for form and data validation
 - **Linting**: ESLint 9 with Nuxt-specific configuration
 

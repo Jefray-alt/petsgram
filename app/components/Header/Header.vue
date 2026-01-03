@@ -8,7 +8,7 @@
       <UButton
         v-if="userStore.currentUser"
         to="/profile/pets"
-        icon="ic:baseline-pets"
+        icon="lucide:paw-print"
         color="primary"
       />
       <UDropdownMenu
@@ -16,7 +16,7 @@
         :items="dropdownItems"
       >
         <UButton
-          icon="ic:baseline-account-circle"
+          icon="lucide:circle-user"
           trailing-icon="lucide:chevron-down"
           color="secondary"
           variant="outline"
@@ -27,7 +27,7 @@
         to="/login"
       >
         <UAvatar
-          icon="ic:baseline-account-circle"
+          icon="lucide:circle-user"
         />
       </NuxtLink>
     </template>
