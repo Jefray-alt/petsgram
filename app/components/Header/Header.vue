@@ -15,8 +15,11 @@
         v-if="userStore.currentUser"
         :items="dropdownItems"
       >
-        <UAvatar
+        <UButton
           icon="ic:baseline-account-circle"
+          trailing-icon="lucide:chevron-down"
+          color="secondary"
+          variant="outline"
         />
       </UDropdownMenu>
       <NuxtLink
@@ -33,8 +36,10 @@
 
 <script lang="ts" setup>
 import { useUserStore } from '@/stores/userStore'
+import { useLogout } from '@/composables/useLogout/useLogout'
 
 const userStore = useUserStore()
+const { logout, isLoggingOut } = useLogout()
 
 const dropdownItems = [
   {
@@ -44,7 +49,9 @@ const dropdownItems = [
   },
   {
     label: 'Log out',
-    icon: 'lucide:log-out'
+    icon: 'lucide:log-out',
+    onSelect: logout,
+    disabled: isLoggingOut.value
   }
 ]
 </script>
