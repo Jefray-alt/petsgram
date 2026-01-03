@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import Joi from 'joi'
 import type { FormSubmitEvent } from '@nuxt/ui'
+import { useLogin } from '@/composables/useLogin/useLogin'
+
+const { isLoggingIn, isLoginError, loginErrorMessage, loginUser } = useLogin()
+const router = useRouter()
 
 const loginFormSchema = Joi.object({
   email: Joi.string().email({ tlds: { allow: false } }).required().label('Email'),
@@ -12,8 +16,13 @@ const loginForm = reactive({
   password: ''
 })
 
-const onSubmit = (event: FormSubmitEvent<typeof loginForm>) => {
-  console.log('Login form submitted:', event.data)
+const showPassword = ref(false)
+
+const onSubmit = async (event: FormSubmitEvent<typeof loginForm>) => {
+  await loginUser(event.data)
+
+  if (isLoginError.value) return
+  router.push('/')
 }
 </script>
 
@@ -35,6 +44,13 @@ const onSubmit = (event: FormSubmitEvent<typeof loginForm>) => {
         class="space-y-4"
         @submit="onSubmit"
       >
+        <UAlert
+          v-if="isLoginError"
+          :description="loginErrorMessage"
+          color="error"
+          title="Login Failed"
+          variant="subtle"
+        />
         <UFormField
           label="Email"
           name="email"
@@ -55,15 +71,25 @@ const onSubmit = (event: FormSubmitEvent<typeof loginForm>) => {
           <UInput
             v-model="loginForm.password"
             class="w-full"
-            type="password"
+            :type="showPassword ? 'text' : 'password'"
             placeholder="Enter your password"
-          />
+          >
+            <template #trailing>
+              <UButton
+                :icon="showPassword ? 'lucide:eye-off' : 'lucide:eye'"
+                variant="link"
+                color="neutral"
+                @click="showPassword = !showPassword"
+              />
+            </template>
+          </UInput>
         </UFormField>
         <UButton
           block
           size="lg"
           class="mt-6"
           type="submit"
+          :loading="isLoggingIn"
         >
           Login
         </UButton>
