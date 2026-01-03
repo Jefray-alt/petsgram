@@ -8,7 +8,8 @@ useSeoMeta({
 })
 
 definePageMeta({
-  layout: false
+  layout: false,
+  colorMode: 'light'
 })
 </script>
 
