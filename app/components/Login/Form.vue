@@ -7,7 +7,7 @@ const { isLoggingIn, isLoginError, loginErrorMessage, loginUser } = useLogin()
 const router = useRouter()
 
 const loginFormSchema = Joi.object({
-  email: Joi.string().email({ tlds: { allow: false } }).required().label('Email'),
+  email: Joi.string().trim().email({ tlds: { allow: false } }).required().label('Email'),
   password: Joi.string().min(6).required().label('Password')
 })
 

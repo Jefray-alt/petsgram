@@ -22,8 +22,8 @@ const isOpen = defineModel<boolean>('open', { default: false })
 const BIO_MAX_LENGTH = 150
 
 const editProfileSchema = Joi.object({
-  fullName: Joi.string().min(2).max(50).required().label('Full Name'),
-  bio: Joi.string().max(BIO_MAX_LENGTH).allow('').label('Bio')
+  fullName: Joi.string().trim().min(2).max(50).required().label('Full Name'),
+  bio: Joi.string().trim().max(BIO_MAX_LENGTH).allow('').label('Bio')
 })
 
 const formState = reactive({

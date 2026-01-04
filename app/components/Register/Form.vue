@@ -7,9 +7,9 @@ const { isSigningUp, isSignUpError, signUpErrorMessage, registerUser } = useRegi
 const router = useRouter()
 
 const registerFormSchema = Joi.object({
-  fullName: Joi.string().min(2).max(50).required().label('Full Name'),
-  username: Joi.string().min(3).max(20).required().label('Username'),
-  email: Joi.string().email({ tlds: { allow: false } }).required().label('Email'),
+  fullName: Joi.string().trim().min(2).max(50).required().label('Full Name'),
+  username: Joi.string().trim().min(3).max(20).required().label('Username'),
+  email: Joi.string().trim().email({ tlds: { allow: false } }).required().label('Email'),
   password: Joi.string().min(6).required().label('Password')
 })
 
