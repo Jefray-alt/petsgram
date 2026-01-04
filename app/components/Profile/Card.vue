@@ -1,13 +1,23 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
+import EditModal from '@/components/Profile/EditModal.vue'
+
 interface Props {
   id: string
   fullName: string
   username: string
   avatarUrl?: string
+  bio?: string
   isOwnProfile?: boolean
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const isEditModalOpen = ref(false)
+
+const openEditModal = () => {
+  isEditModalOpen.value = true
+}
 </script>
 
 <template>
@@ -31,9 +41,17 @@ defineProps<Props>()
       block
       variant="outline"
       class="mt-4"
-      to="/profile/edit"
+      @click="openEditModal"
     >
       Edit profile
     </UButton>
+
+    <EditModal
+      v-model:open="isEditModalOpen"
+      :full-name="props.fullName"
+      :username="props.username"
+      :avatar-url="props.avatarUrl"
+      :bio="props.bio"
+    />
   </div>
 </template>

@@ -17,6 +17,7 @@ await userStore.fetchProfile()
         :full-name="userStore.currentUser.fullName || ''"
         :username="userStore.currentUser.username"
         :avatar-url="userStore.currentUser.avatarUrl || undefined"
+        :bio="userStore.currentUser.bio || undefined"
         is-own-profile
       />
       <div class="flex-1">

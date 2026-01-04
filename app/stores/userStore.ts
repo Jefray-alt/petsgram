@@ -8,9 +8,9 @@ export const useUserStore = defineStore('user', {
   }),
 
   actions: {
-    async fetchProfile() {
-      // Skip if we already have the profile
-      if (this.hasProfile && this.profile) {
+    async fetchProfile(force = false) {
+      // Skip if we already have the profile (unless force is true)
+      if (!force && this.hasProfile && this.profile) {
         return
       }
 
